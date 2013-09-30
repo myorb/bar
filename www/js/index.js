@@ -1,3 +1,4 @@
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -18,19 +19,6 @@ var app = {
         app.receivedEvent('deviceready');
 
         // demo the scan
-        console.log('about to scan');
-        try {
-            var scanned = app.scan();
-            console.log('scan triggered', scanned);
-        } catch (e) {
-            console.log('scan failed');
-            console.log(JSON.stringify(e));
-            console.log('that sucks... reloading in 10');
-            setTimeout(function() {
-                console.log('reloading now...');
-                app.onDeviceReady();
-            }, 10000);
-        }
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -55,7 +43,7 @@ var app = {
         // documentation said the syntax was this:
         // var scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
         // but playing with options, seems like it should be this:
-        var scanner = window.cordova.require("cordova/plugin/BarcodeScanner");
+        var scanner = window.plugins.barcodeScanner;
         scanner.scan(
                 function (result) {
                     alert("We got a barcode\n" +
@@ -67,5 +55,12 @@ var app = {
                     alert("Scanning failed: " + error);
                 }
                 );
+    },
+     encode: function() {
+        window.plugins.barcodeScanner.encode(BarcodeScanner.Encode.TEXT_TYPE, "http://www.nytimes.com", function(success) {
+            alert("encode success: " + success);
+        }, function(fail) {
+            alert("encoding failed: " + fail);
+        }); 
     }
 };
