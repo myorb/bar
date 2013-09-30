@@ -47,25 +47,3 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
-
-var scanCode = function() {
-    window.plugins.barcodeScanner.scan(
-        function(result) {
-        alert("Scanned Code: " + result.text 
-                + ". Format: " + result.format
-                + ". Cancelled: " + result.cancelled);
-    }, function(error) {
-        alert("Scan failed: " + error);
-    });
-}
-
-var encodeText = function() {
-    window.plugins.barcodeScanner.encode(
-            BarcodeScanner.Encode.TEXT_TYPE,
-            "http://www.mobiledevelopersolutions.com", 
-            function(success) {
-                alert("Encode success: " + success);
-            }, function(fail) {
-                alert("Encoding failed: " + fail);
-            });
-}

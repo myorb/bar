@@ -1,4 +1,0 @@
-bar
-===
-
-phonegap bar applcation
