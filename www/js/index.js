@@ -16,7 +16,7 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-var app = {
+var native_app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -35,17 +35,13 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
 
-        
+       
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
+        var parentElement = document.getElementsByClassName(id);
+        $(".com_in_bar").on("click",this.scan());
+       
         console.log('Received Event: ' + id);
     },
     /**

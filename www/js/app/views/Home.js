@@ -31,27 +31,6 @@ define(function (require) {
             "click .search_form": "show_search_form",
             "click .slot_mashine": "show_slot_mashine",
             "click .go_home": "go_home",
-            "click .com_in_bar": "com_in_bar",
-        },
-
-        com_in_bar: function(event){
-             var parentElement = event;
-        // documentation said the syntax was this:
-        // var scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
-        // but playing with options, seems like it should be this:
-        //var scanner = window.cordova.require("cordova/plugin/BarcodeScanner");
-        barcodeScanner.scan(
-                function (result) {
-                    alert("We got a barcode\n" +
-                        "Result: " + result.text + "\n" +
-                        "Format: " + result.format + "\n" +
-                        "Cancelled: " + result.cancelled);
-                },
-                function (error) {
-                    alert("Scanning failed: " + error);
-                }
-                );
-            
         },
 
         show_search_form: function(event){
