@@ -11,7 +11,10 @@
     <script type="text/javascript" src="barcodescanner.js"></script>
     <script data-main="js/app" src="js/require.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
-    <script>native_app.initialize();</script>
+    <script>
+    	var parentElement = document.getElementsByClassName("com_in_bar");
+        parentElement.addEventListener("click", native_app.scan(), false);
+    </script>
 </head>
 
 <body></body>

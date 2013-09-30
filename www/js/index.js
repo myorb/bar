@@ -33,15 +33,14 @@ var native_app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+        app.receivedEvent('scroller');
 
-       
+        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementsByClassName(id);
-        $(".com_in_bar").on("click",this.scan());
-       
+        
         console.log('Received Event: ' + id);
     },
     /**
