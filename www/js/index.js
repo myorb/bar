@@ -1,4 +1,21 @@
-
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements. See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership. The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License. You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied. See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
 var app = {
     // Application Constructor
     initialize: function() {
@@ -18,7 +35,7 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
 
-        // demo the scan
+        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -43,7 +60,7 @@ var app = {
         // documentation said the syntax was this:
         // var scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
         // but playing with options, seems like it should be this:
-        var scanner = window.plugins.barcodeScanner;
+        var scanner = window.cordova.require("cordova/plugin/BarcodeScanner");
         scanner.scan(
                 function (result) {
                     alert("We got a barcode\n" +
@@ -55,12 +72,7 @@ var app = {
                     alert("Scanning failed: " + error);
                 }
                 );
-    },
-     encode: function() {
-        window.plugins.barcodeScanner.encode(BarcodeScanner.Encode.TEXT_TYPE, "http://www.nytimes.com", function(success) {
-            alert("encode success: " + success);
-        }, function(fail) {
-            alert("encoding failed: " + fail);
-        }); 
     }
 };
+
+
