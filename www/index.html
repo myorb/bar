@@ -27,76 +27,16 @@
     </head>
     <body>
         <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+            <a href="#" class="btn" onclick="scanCode();">Scan Code</a>    
+            <a href="#" class="btn enc" onclick="encodeText();">Encode Text</a> 
+            <a href="#" class="btn enc" onclick="encodeEmail();">Encode Email</a>   
+            <a href="#" class="btn enc" onclick="encodePhone();">Encode Phone</a>   
+            <a href="#" class="btn enc" onclick="encodeSMS();">Encode SMS</a>
         </div>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="barcodescanner.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        
 
 
-        <style>
-            body{
-                 background:#888888 none repeat scroll 0 0;
-            }
-            input[type='text']{
-                width:18em;
-                border:1px solid black;
-            }
-            input[type='button']{
-                width:20em;
-                border:1px solid black;
-                color:#ffffff;
-                font-family:"Times New Roman",Times,serif;
-                font-size:0.9em;
-                font-weight:bold;
-                background:#737CA1;
-            }
-        </style>
-        <script type="text/javascript">
-
-            function scanCode(){
-                window.plugins.barcodeScanner.scan(
-                    function(result){
-                        alert("Scanned Code: " + result.text 
-                        + ". Format: " + result.format
-                        + ". Cancelled: " + result.cancelled);
-                    }, 
-                    function(error){
-                        alert("Scan failed: " + error);
-                    }
-                );
-            }
- 
-            function encodeData(){
-                var data = document.getElementById("data").value;
-                if (data != ''){
-                    window.plugins.barcodeScanner.encode(
-                        BarcodeScanner.Encode.TEXT_TYPE, data, 
-                        function(success){
-                            alert("Encode success: " + success);
-                        }, 
-                        function(fail){
-                            alert("Encoding failed: " + fail);
-                        }
-                    );
-                }
-                else{
-                    alert("Please enter some data.");
-                    return false;
-                }
-            }
-        </script>
-        <h3>Barcode/QR Code Scanner And Encoder</h3>
- 
-        <input type="button" value="Scan Code" onclick="scanCode();"/><br/><br/>
- 
-        Data : <br/>
-        <input type="text" name="data" id="data" /><br/><br/>
-        <input type="button" value="Encode Data" onclick="encodeData();"/>
+    <script type="text/javascript" src="phonegap.js"></script>
+    <script type="text/javascript" src="barcodescanner.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>
