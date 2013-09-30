@@ -20,6 +20,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
+        var scaner = new BarcodeScanner();
     },
     // Bind Event Listeners
     //
@@ -36,7 +37,7 @@ var app = {
     // Scan a barcode
     //
     scan: function() {
-        window.plugins.barcodeScanner.scan( function(result) {
+        scaner.scan( function(result) {
             alert("We got a barcode\n" +
                   "Result: " + result.text + "\n" +
                   "Format: " + result.format + "\n" +
@@ -48,7 +49,7 @@ var app = {
     // Encode text into QR code
     //
     encode: function() {
-        window.plugins.barcodeScanner.encode(BarcodeScanner.Encode.TEXT_TYPE, "http://www.nytimes.com", function(success) {
+        scaner.encode(BarcodeScanner.Encode.TEXT_TYPE, "http://www.nytimes.com", function(success) {
             alert("encode success: " + success);
         }, function(fail) {
             alert("encoding failed: " + fail);
