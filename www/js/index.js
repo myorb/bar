@@ -33,14 +33,28 @@ var native_app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('scroller');
+        app.receivedEvent('deviceready');
 
-        
+        // demo the scan
+        console.log('about to scan');
+        try {
+            var scanned = app.scan();
+            console.log('scan triggered', scanned);
+        } catch (e) {
+            console.log('scan failed');
+            console.log(JSON.stringify(e));
+            console.log('that sucks... reloading in 10');
+            setTimeout(function() {
+                console.log('reloading now...');
+                app.onDeviceReady();
+            }, 10000);
+        }
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementsByClassName(id);
-        
+        var parentElement = document.getElementById(id);
+        $(".com_in_bar").on("click",this.scan());
+       
         console.log('Received Event: ' + id);
     },
     /**
